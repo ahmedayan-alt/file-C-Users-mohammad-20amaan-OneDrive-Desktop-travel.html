@@ -1,118 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>travel</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodExpress | Order Delicious Food</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    body, html { 
-      height: 100%;
-      font-family: Arial Black, sans-serif;
-    }  
-
-    /* Background image */
     body {
-      background: url("./images/maldives.jpg");
-      background-size: cover;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #ff5722;
+      color: white;
+      padding: 20px 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+    }
+
+    nav {
       display: flex;
       justify-content: center;
-      align-items: center;
+      background-color: #e64a19;
     }
 
-    /* Form container */
-    .form-container {
-      background: #fffdd0; /* cream color */
-      padding: 30px;
-      border-radius: 12px;
-      width: 400px;
-      color: #333; /* dark text for contrast */
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    .form-container h1 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-      letter-spacing: 2px;
-      text-align: center;
+    nav a {
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
       font-weight: bold;
     }
 
-    .form-container label {
-      display: block;
-      margin: 10px 0 5px;
-      text-align: left;
+    nav a:hover {
+      background-color: #d84315;
     }
 
-    .form-container input,
-    .form-container select {
+    .hero {
+      background: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h2 {
+      font-size: 3em;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .menu {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .menu h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2em;
+      color: #ff5722;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.03);
+    }
+
+    .menu-item img {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .menu-item .info {
+      padding: 15px;
+    }
+
+    .info h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .info p {
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+
+    .info span {
+      font-weight: bold;
+      color: #ff5722;
+    }
+
+    .order-form {
+      background-color: #fff3e0;
+      padding: 40px 20px;
+    }
+
+    .order-form h2 {
+      text-align: center;
+      color: #e64a19;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, select, textarea, button {
+      padding: 12px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-size: 1em;
     }
 
-    .form-container button {
-      width: 100%;
-      padding: 12px;
-      background: #008c9e;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
+    button {
+      background-color: #ff5722;
       color: white;
+      border: none;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
 
-    .form-container button:hover {
-      background: #006f7d;
+    button:hover {
+      background-color: #e64a19;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 2em;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="form-container">
-    <h1>TRIP.COM</h1>
-    <form>
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+  <header>
+    <h1>FoodExpress</h1>
+    <p>Fast. Fresh. Delicious.</p>
+  </header>
 
-      <label for="gender">Gender</label>
-      <select id="gender" name="gender" required>
-        <option value="">Select</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="#order">Order Now</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Order Your Favorite Meals Online</h2>
+  </section>
+
+  <section class="menu" id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://images.pexels.com/photos/2619967/pexels-photo-2619967.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Pizza">
+        <div class="info">
+          <h3>Cheesy Pizza</h3>
+          <p>Loaded with mozzarella & fresh toppings.</p>
+          <span>$12.99</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Burger">
+        <div class="info">
+          <h3>Double Beef Burger</h3>
+          <p>Juicy grilled beef patty with cheddar.</p>
+          <span>$9.49</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Salad">
+        <div class="info">
+          <h3>Fresh Green Salad</h3>
+          <p>A healthy mix of greens & vinaigrette.</p>
+          <span>$6.99</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.pexels.com/photos/3577568/pexels-photo-3577568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Sushi">
+        <div class="info">
+          <h3>Sushi Platter</h3>
+          <p>Assorted sushi with wasabi & soy sauce.</p>
+          <span>$15.00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="order-form" id="order">
+    <h2>Place Your Order</h2>
+    <form onsubmit="submitOrder(event)">
+      <input type="text" placeholder="Your Name" required />
+      <input type="tel" placeholder="Phone Number" required />
+      <input type="text" placeholder="Delivery Address" required />
+      <select required>
+        <option value="">Select Dish</option>
+        <option>Cheesy Pizza</option>
+        <option>Double Beef Burger</option>
+        <option>Fresh Green Salad</option>
+        <option>Sushi Platter</option>
       </select>
-
-      <label for="nationality">Nationality</label>
-      <input type="text" id="nationality" name="nationality" required>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="phone">Phone</label>
-      <input type="tel" id="phone" name="phone" required>
-
-      <label for="departure">Departure City</label>
-      <input type="text" id="departure" name="departure" required>
-
-      <label for="arrival">Arrival City</label>
-      <input type="text" id="arrival" name="arrival" required>
-
-      <label for="travel-date">Travel Date</label>
-      <input type="date" id="travel-date" name="travel-date" required>
-
-      <label for="return-date">Return Date</label>
-      <input type="date" id="return-date" name="return-date" required>
-
-      <button type="submit">Submit Form</button>
+      <textarea rows="3" placeholder="Additional Notes"></textarea>
+      <button type="submit">Submit Order</button>
     </form>
-  </div>
+  </section>
+
+  <footer id="contact">
+    <p>&copy; 2025 FoodExpress. All rights reserved.</p>
+    <p>Email: support@foodexpress.com | Phone: +1 234 567 890</p>
+  </footer>
+
+  <script>
+    function submitOrder(e) {
+      e.preventDefault();
+      alert('Thank you! Your order has been received.');
+    }
+  </script>
 </body>
 </html>
